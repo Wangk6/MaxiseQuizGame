@@ -5,29 +5,39 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.maxiselogin.ui.main.PlaceholderFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     View mainView;
+
+    //Used for gestures
+    private float x1,x2;
+    static final int MIN_DISTANCE = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mainView = findViewById(R.id.mainView);
+
+        //Screen gesture listener
         mainView.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this){
-            public void onSwipeRight() {
+
+            //User Swipes left to go to next activity
+            public void onSwipeLeft() {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
+                nextPageLoad();
             }
         });
-
-
     }
 
 
-
+    //User can click the arrow to go to next activity
     public void nextPage(View view) {
         nextPageLoad();
     }
