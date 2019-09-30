@@ -8,32 +8,45 @@
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="331dp"
-        android:layout_height="638dp"
+        android:layout_width="330dp"
+        android:layout_height="550dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="#3A3535"
         tools:context=".LoginScreenActivity">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="281dp"
+            android:layout_height="264dp"
+            app:layout_anchor="@+id/view_pager"
+            app:layout_anchorGravity="center"
+            app:srcCompat="@drawable/logo_transparent" />
+
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/layout_topcurve"
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#2196F3" />
+                android:layout_height="match_parent"
+                app:tabSelectedTextColor="#FFFFFF"
+                app:tabTextColor="#FFFFFF"/>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/layout_curve"
+            android:alpha="0.3"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         </androidx.viewpager.widget.ViewPager>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </RelativeLayout>
