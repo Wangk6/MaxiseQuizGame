@@ -2,16 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.PlaceholderFragment">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/txtCreateAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="Create Account"
         android:textSize="20dp"
@@ -24,7 +22,7 @@
         android:id="@+id/btnRegister"
         android:layout_width="260dp"
         android:layout_height="51dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
         android:text="Register"
         app:layout_constraintBottom_toTopOf="@+id/txtOrCreate"
@@ -33,56 +31,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editlastName"
-        android:layout_width="280dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/registrationbox"
-        android:drawableRight="@drawable/ic_account_box_black_24dp"
-        android:ems="10"
-        android:hint="Last Name"
-        android:inputType="textPersonName"
-        android:textSize="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/editDateOfBirth"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editFirstName"
-        android:layout_width="280dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/registrationbox"
-        android:drawableRight="@drawable/ic_account_box_black_24dp"
-        android:ems="10"
-        android:hint="First Name"
-        android:inputType="textPersonName"
-        android:textSize="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/editlastName"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editPassword"
-        android:layout_width="280dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/registrationbox"
-        android:drawableRight="@drawable/visibilityoff"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textSize="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/editFirstName"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
         android:id="@+id/editEmail"
         android:layout_width="280dp"
         android:layout_height="45dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/registrationbox"
         android:drawableRight="@drawable/mail"
         android:ems="10"
@@ -90,17 +42,67 @@
         android:inputType="textPersonName"
         android:textSize="14dp"
         app:layout_constraintBottom_toTopOf="@+id/editPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editlastName"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/registrationbox"
+        android:drawableRight="@drawable/ic_account_box_black_24dp"
+        android:ems="10"
+        android:hint="Last Name"
+        android:inputType="textPersonName"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/editDateOfBirth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editFirstName"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/registrationbox"
+        android:drawableRight="@drawable/ic_account_box_black_24dp"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/editlastName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/registrationbox"
+        android:drawableRight="@drawable/visibilityoff"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/editFirstName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editDateOfBirth"
         android:layout_width="280dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="12dp"
         android:background="@drawable/registrationbox"
         android:drawableRight="@drawable/date"
         android:ems="10"
-        android:hint="Birthday (mm/dd/yy)"
+        android:hint="Birthday (dd/mm/yyyy)"
         android:inputType="date"
         android:textSize="14dp"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
@@ -112,34 +114,31 @@
         android:id="@+id/txtOrCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:text="Or"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginGoogle"
+        app:layout_constraintBottom_toTopOf="@+id/signUpGoogle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/loginGoogle"
+        android:id="@+id/signUpGoogle"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="googleSignIn"
         android:src="@drawable/logingoogle"
-        app:layout_constraintBottom_toTopOf="@+id/loginFB"
+        app:layout_constraintBottom_toTopOf="@+id/signUpFB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/loginFB"
+        android:id="@+id/signUpFB"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="facebookSignIn"
+        android:layout_marginBottom="28dp"
         android:src="@drawable/loginfacebook"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
 

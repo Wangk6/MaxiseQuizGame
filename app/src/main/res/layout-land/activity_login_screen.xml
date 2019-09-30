@@ -8,8 +8,8 @@
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="370dp"
-        android:layout_height="600dp"
+        android:layout_width="600dp"
+        android:layout_height="350dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         tools:context=".LoginScreenActivity">
