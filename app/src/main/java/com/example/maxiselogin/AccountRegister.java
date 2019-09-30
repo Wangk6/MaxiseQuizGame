@@ -1,5 +1,6 @@
 package com.example.maxiselogin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import androidx.fragment.app.Fragment;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AccountRegister extends Fragment {
     Button btnRegister;
@@ -83,13 +86,35 @@ public class AccountRegister extends Fragment {
                     }
                 }
                 else{
+                    boolean errors = false;
                     //Check Date of birth is correct
-                    if(isThisDateValid(dobText, "dd/MM/yyyy") == true) {
+                    if(isThisDateValid(dobText, "dd/MM/yyyy") == false) {
+                        dob.setError("Invalid Format (dd/mm/yyyy)");
+                        errors = true;
+                    }
+                    if(fText.length() < 3 || fText.length() > 30){
+                        fname.setError("First name must be greater than 3 and less than 30 characters");
+                        errors = true;
+                    }
+                    if(lText.length() < 1 || lText.length() > 30){
+                        lname.setError("Last name must be greater than 1 and less than 30 characters");
+                        errors = true;
+                    }
+                    if(isValidEmailAddress(emailText) == false){
+                        email.setError("Invalid Format (example@mail.com)");
+                        errors = true;
+                    }
+                    if(passText.length() < 8){
+                        password.setError("Password must be > 8 characters");
+                        errors = true;
+                    }
+
+                    if(errors == false){
                         Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getActivity(), LoginScreenActivity.class);
+                        startActivity(i);
                     }
-                    else{
-                        dob.setError("Invalid Format");
-                    }
+
                 }
             }
         });
@@ -119,6 +144,34 @@ public class AccountRegister extends Fragment {
         }
 
         return true;
+    }
+
+    public boolean isValidEmailAddress(String email) {
+        // Email Regex java
+        String EMAIL_REGEX = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
+
+        // static Pattern object, since pattern is fixed
+        Pattern pattern;
+
+        // non-static Matcher object because it's created from the input String
+        Matcher matcher;
+
+        // initialize the Pattern object
+        pattern = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
+
+
+        /**
+         * This method validates the input email address with EMAIL_REGEX pattern
+         *
+         * @param email
+         * @return boolean
+         */
+            matcher = pattern.matcher(email);
+            if(matcher.matches() == true){
+                return true;
+            }else {
+                return false;
+            }
     }
 
     public void facebookSignInClick(View view) {
