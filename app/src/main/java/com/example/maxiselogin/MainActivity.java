@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
             //User Swipes left to go to next activity
             public void onSwipeLeft() {
-                Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
                 nextPageLoad();
             }
         });

@@ -1,5 +1,6 @@
 package com.example.maxiselogin;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +13,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,6 +25,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AccountRegister extends Fragment {
+
+    //Used as a controller to send data between fragments via LoginScreenActivity
+    private OnRegisterFragmentListener mCallback;
+
     Button btnRegister;
     EditText email, password, fname, lname, dob;
     ImageView facebookSignUp, googleSignUp;
@@ -111,8 +119,10 @@ public class AccountRegister extends Fragment {
 
                     if(errors == false){
                         Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(getActivity(), LoginScreenActivity.class);
-                        startActivity(i);
+                        mCallback.messageFromRegister("KEY_EMAIL", emailText);
+                        mCallback.messageFromRegister("KEY_PASSWORD", passText);
+                        mCallback.switchTab();
+
                     }
 
                 }
@@ -120,6 +130,30 @@ public class AccountRegister extends Fragment {
         });
 
         return view;
+    }
+
+    public interface OnRegisterFragmentListener {
+        void messageFromRegister(String type, String msg);
+        void switchTab();
+    }
+
+    // This method insures that the Activity has actually implemented our
+    // listener and that it isn't null.
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnRegisterFragmentListener) {
+            mCallback = (OnRegisterFragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnRegisterFragmentListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallback = null;
     }
 
     public boolean isThisDateValid(String dateToValidate, String dateFromat){

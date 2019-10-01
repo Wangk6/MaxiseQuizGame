@@ -29,13 +29,14 @@ public class AccountLogin extends Fragment {
         facebookLogin = view.findViewById(R.id.loginFB);
         googleLogin = view.findViewById(R.id.loginGoogle);
 
+        //Facebook Login is clicked
         facebookLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 facebookSignInClick(view);
             }
         });
-
+        //Google Login is clicked
         googleLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +44,7 @@ public class AccountLogin extends Fragment {
             }
         });
 
+        //Login Button is clicked
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,11 +67,27 @@ public class AccountLogin extends Fragment {
                     loginPassword.setError("Empty");
                 }
                 else{
+                    //Check for existing user
+                        //Check for matching password
+                            //Log in and switch activity
                     Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
                 }
             }
         });
         return view;
+    }
+
+
+    //When user clicks register check for values to pass into login
+    public void updateText(String type, String msg){
+        if(type == "KEY_EMAIL"){
+            loginEmail.getText().clear();
+            loginEmail.setText(msg);
+        }
+        else if(type == "KEY_PASSWORD"){
+            loginPassword.getText().clear();
+            loginPassword.setText(msg);
+        }
     }
 
     public void facebookSignInClick(View view) {
