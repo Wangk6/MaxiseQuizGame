@@ -118,7 +118,7 @@ public class AccountRegister extends Fragment {
                     }
 
                     if(errors == false){
-                        Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Register Successful", Toast.LENGTH_SHORT).show();
                         mCallback.messageFromRegister("KEY_EMAIL", emailText);
                         mCallback.messageFromRegister("KEY_PASSWORD", passText);
                         mCallback.switchTab();

@@ -1,5 +1,6 @@
 package com.example.maxiselogin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,6 +72,8 @@ public class AccountLogin extends Fragment {
                         //Check for matching password
                             //Log in and switch activity
                     Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getActivity(), empty_loggedin_activity.class);
+                    startActivity(i);
                 }
             }
         });
