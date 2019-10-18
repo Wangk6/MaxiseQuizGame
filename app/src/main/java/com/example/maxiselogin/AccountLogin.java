@@ -14,8 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.maxiselogin.R;
-
 public class AccountLogin extends Fragment {
     Button btnLogin;
     EditText loginEmail, loginPassword;
@@ -72,7 +70,7 @@ public class AccountLogin extends Fragment {
                         //Check for matching password
                             //Log in and switch activity
                     Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getActivity(), empty_loggedin_activity.class);
+                    Intent i = new Intent(getActivity(), MainLoggedInActivity.class);
                     startActivity(i);
                 }
             }

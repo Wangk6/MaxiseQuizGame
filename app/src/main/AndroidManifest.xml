@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".empty_loggedin_activity"></activity>
+        <activity android:name=".MainLoggedInActivity"></activity>
         <activity
             android:name=".LoginScreenActivity"
             android:label="@string/title_activity_login_screen"
