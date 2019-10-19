@@ -13,6 +13,7 @@
         android:layout_height="600dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
         tools:context=".LoginScreenActivity">
 
         <ImageView
@@ -34,6 +35,7 @@
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@android:color/transparent"
                 app:tabSelectedTextColor="#FFFFFF"
                 app:tabTextColor="#FFFFFF"/>
         </com.google.android.material.appbar.AppBarLayout>

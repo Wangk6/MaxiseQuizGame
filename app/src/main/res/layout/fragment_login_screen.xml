@@ -22,9 +22,11 @@
 
     <Button
         android:id="@+id/btnLogin"
+        style="@style/ButtonStyle"
         android:layout_width="260dp"
         android:layout_height="51dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/layout_buttoncurve"
         android:gravity="center"
         android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/loginGoogle"
@@ -52,6 +54,7 @@
         android:id="@+id/editLoginPassword"
         android:layout_width="280dp"
         android:layout_height="45dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/registrationbox"
         android:drawableRight="@drawable/visibilityoff"
         android:ems="10"
@@ -65,8 +68,8 @@
 
     <ImageView
         android:id="@+id/loginGoogle"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="12dp"
         android:onClick="googleSignInClick"
         android:src="@drawable/logingoogle"
@@ -77,8 +80,8 @@
 
     <ImageView
         android:id="@+id/loginFB"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="168dp"
         android:onClick="facebookSignInClick"
         android:src="@drawable/loginfacebook"
