@@ -21,7 +21,7 @@ public class QuestionOneFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_quiz_question_one, container, false);
 
         Button submitBtn;
-        submitBtn = view.findViewById(R.id.button);
+        submitBtn = view.findViewById(R.id.btnSubmitQuizOne);
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override

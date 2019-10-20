@@ -38,4 +38,9 @@ public class MainLoggedInActivity extends AppCompatActivity {
         Intent i = new Intent(MainLoggedInActivity.this, MainLoggedInStart.class);
         startActivity(i);
     }
+
+    public void HighScoreButtonOnClick(View view) {
+        Intent i = new Intent(MainLoggedInActivity.this, MainLoggedInHighScore.class);
+        startActivity(i);
+    }
 }
