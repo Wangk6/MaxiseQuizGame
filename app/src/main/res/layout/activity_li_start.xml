@@ -6,10 +6,10 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imgRightArrow2"
+        android:id="@+id/previousPage"
         android:layout_width="66dp"
         android:layout_height="72dp"
-        android:onClick="PreviousPage"
+        android:onClick="PreviousPageStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_keyboard_arrow_left_trueblack_24dp" />
