@@ -29,12 +29,12 @@ public class QuestionTwoFragment extends Fragment {
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String QUESTION_TWO = "questionTwo";
     public static final String SCORE = "score";
-
+    SharedPreferences sharedPreferences;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_quiz_question_two, container, false);
-
+        sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         submitBtn = view.findViewById(R.id.btnSubmitQuizTwo);
         radioGroup = view.findViewById(R.id.radioGroup2);
 
@@ -71,21 +71,9 @@ public class QuestionTwoFragment extends Fragment {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // Continue with delete operation
                                     //Save results
-                                    //new MainLoggedInStart().saveData(2, radioButton.getText().toString());
-
-                                    SharedPreferences sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-                                    boolean test = sharedPreferences.getBoolean(QUESTION_TWO, false);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
                                     String ans = radioButton.getText().toString().trim();
-                                    String correctAns = "8";
-                                    if(ans == correctAns) {
-                                        editor.putInt(SCORE, 20);
-                                        editor.putBoolean(QUESTION_TWO, true);
-                                    }
-                                    else{
-                                        editor.putBoolean(QUESTION_TWO, false);
-                                    }
-                                    editor.commit();
+                                    MainLoggedInStart ls = new MainLoggedInStart();
+                                    ls.saveData(sharedPreferences,2, ans);
 
                                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                                     ft.replace(R.id.quiz_fragment, new QuestionThreeFragment());

@@ -1,33 +1,40 @@
 package com.example.maxiselogin.QuizFragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.maxiselogin.HighScore;
+import com.example.maxiselogin.MainLoggedInActivity;
 import com.example.maxiselogin.MainLoggedInStart;
 import com.example.maxiselogin.R;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class QuestionResultsFragment extends Fragment {
+    Button submitQuiz;
     ImageView q1, q2, q3, q4, q5;
-    TextView totalScore;
+    TextView totalScore, highScoreHead;
+    EditText name;
+    int userScore;
+    boolean newHighScore = false;
     public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String QUESTION_ONE = "questionOne";
-    public static final String QUESTION_TWO = "questionTwo";
-    public static final String QUESTION_THREE = "questionThree";
-    public static final String QUESTION_FOUR = "questionFour";
-    public static final String QUESTION_FIVE = "questionFive";
+
     public static final String SCORE = "score";
-    
+    SharedPreferences sharedPreferences;
+    MainLoggedInStart ls;
+    HighScore hs;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,61 +44,74 @@ public class QuestionResultsFragment extends Fragment {
         q3 = view.findViewById(R.id.imgQuestionThreeResult);
         q4 = view.findViewById(R.id.imgQuestionFourResult);
         q5 = view.findViewById(R.id.imgQuestionFiveResult);
+        submitQuiz = view.findViewById(R.id.btnSubmitQuiz);
+        highScoreHead = view.findViewById(R.id.txtDisplayNewHighScore);
         totalScore = view.findViewById(R.id.txtTotalScore);
+        name = view.findViewById(R.id.editTextName);
 
-        if(getScoreData("QONE") == 1){ //If correct
+        sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        ls = new MainLoggedInStart();
+        hs = new HighScore(sharedPreferences);
+
+        userScore = ls.getScoreData(sharedPreferences,"SCORE");
+        if(userScore>100){ userScore = 100;} //Cap at 100
+
+        totalScore.setText(String.valueOf(userScore) + "%");
+        if(ls.getScoreData(sharedPreferences,"QONE") == 1){ //If correct
             q1.setImageResource(R.drawable.ic_check_circle_black_24dp);
         }
-        if(getScoreData("QTWO") == 1){ //If correct
+        if(ls.getScoreData(sharedPreferences,"QTWO") == 1){ //If correct
             q2.setImageResource(R.drawable.ic_check_circle_black_24dp);
         }
-        if(getScoreData("QTHREE") == 1){ //If correct
+        if(ls.getScoreData(sharedPreferences,"QTHREE") == 1){ //If correct
             q3.setImageResource(R.drawable.ic_check_circle_black_24dp);
         }
-        if(getScoreData("QFOUR") == 21){ //If correct
+
+        int qFourScore = ls.getScoreData(sharedPreferences,"QFOUR");
+        if(qFourScore > 20){ //If correct
             q4.setImageResource(R.drawable.ic_check_circle_black_24dp);
         }
-        if(getScoreData("QFIVE") == 21){ //If correct
+        else if(qFourScore >= 7){
+            q4.setImageResource(R.drawable.ic_part_wrong_24dp);
+        }
+
+        int qFiveScore = ls.getScoreData(sharedPreferences,"QFIVE");
+
+        if(qFiveScore > 20){ //If correct
             q5.setImageResource(R.drawable.ic_check_circle_black_24dp);
         }
-        //totalScore.setText(getScoreData("SCORE"));
+        else if(qFiveScore >= 7){
+            q5.setImageResource(R.drawable.ic_part_wrong_24dp);
+        }
+
+        if(userScore > hs.getHighScore(sharedPreferences)){
+            highScoreHead.setVisibility(View.VISIBLE);
+            name.setVisibility(View.VISIBLE);
+            newHighScore = true;
+        }
+
+        submitQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(newHighScore == true) {
+                    String userName = name.getText().toString().trim();
+                    if (!userName.equals("")) {
+                        hs.setHighScore(sharedPreferences, userScore, userName);
+                        Intent i = new Intent(getActivity(), MainLoggedInStart.class);
+                        startActivity(i);
+                    }
+                    else {
+                        Toast.makeText(getContext(), "Please enter your name", Toast.LENGTH_SHORT );
+                    }
+                }
+                else{
+                    Intent i = new Intent(getActivity(), MainLoggedInActivity.class);
+                    startActivity(i);
+                }
+            }
+        });
+
         return view;
     }
 
-    public int getScoreData(String key){
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        int num = 0;
-        boolean ans;
-        //if(key == "SCORE") {
-        //    num = sharedPreferences.getInt(SCORE, 0);
-        //}
-        if(key == "QONE") {
-            ans = sharedPreferences.getBoolean(QUESTION_ONE, false);
-            if (ans == true) {
-                num = 1;
-            }
-        }else if(key == "QTWO") {
-            ans = sharedPreferences.getBoolean(QUESTION_TWO, false);
-            if(ans == true){
-                num = 1;
-            }
-        }else if(key == "QTHREE"){
-            ans = sharedPreferences.getBoolean(QUESTION_THREE, false);
-            if(ans == true){
-                num = 1;
-            }
-        }else if(key == "QFOUR"){
-            num = sharedPreferences.getInt(QUESTION_FOUR, 0);
-            if(num >= 21){
-                num = 1;
-            }
-        }else if(key == "QFIVE"){
-            num = sharedPreferences.getInt(QUESTION_FIVE, 0);
-            if(num >= 21){
-                num = 1;
-            }
-        }
-
-        return num;
-    }
 }

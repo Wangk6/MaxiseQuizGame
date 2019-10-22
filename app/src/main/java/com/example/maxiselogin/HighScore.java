@@ -1,4 +1,4 @@
-package com.example.maxiselogin.QuizFragment;
+package com.example.maxiselogin;
 
 import android.content.SharedPreferences;
 
@@ -9,25 +9,28 @@ public class HighScore extends AppCompatActivity {
     String highScoreUser;
     public static final String HIGH_SCORE = "highScore";
     public static final String HIGH_SCORE_USER = "highScoreUser";
-    public static final String SHARED_PREFS = "sharedPrefs";
 
-    public HighScore(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+    public HighScore(SharedPreferences sharedPreferences){
         highScore = sharedPreferences.getInt(HIGH_SCORE, 0);
         highScoreUser = sharedPreferences.getString(HIGH_SCORE_USER, "");
     }
 
-    public void setHighScore(int score, String name){
+    public void setHighScore(SharedPreferences sharedPreferences, int score, String name){
         highScore = score;
         highScoreUser = name;
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(HIGH_SCORE, score);
         editor.putString(HIGH_SCORE_USER, name);
-        editor.apply();
+        editor.commit();
     }
 
-    public int getHighScore(){
+    public int getHighScore(SharedPreferences sharedPreferences){
+        highScore = sharedPreferences.getInt(HIGH_SCORE, 0);
         return highScore;
+    }
+
+    public String getHighScoreUser(SharedPreferences sharedPreferences){
+        highScoreUser = sharedPreferences.getString(HIGH_SCORE_USER, "");
+        return highScoreUser;
     }
 }

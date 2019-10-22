@@ -8,24 +8,40 @@
 
 
     <TextView
+        android:id="@+id/txtDisplayNewHighScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="New High Score!"
+        android:textAlignment="center"
+        android:textColor="#E91E63"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuestionFiveResults" />
+
+    <TextView
         android:id="@+id/txtTotalScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
         android:text="0%"
         android:textAlignment="center"
         android:textColor="#2196F3"
         android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtQuestionFiveResults" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDisplayNewHighScore" />
 
     <TextView
         android:id="@+id/txtResults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="40dp"
         android:text="Results"
         android:textAlignment="center"
         android:textColor="#2196F3"
@@ -116,22 +132,22 @@
         style="@style/ButtonStyle"
         android:layout_width="154dp"
         android:layout_height="52dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/layout_buttoncurve"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTotalScore"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextName"
+        app:layout_constraintVertical_bias="0.184" />
 
     <ImageView
         android:id="@+id/imgQuestionOneResult"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="96dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_wrong_24dp" />
@@ -175,5 +191,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgQuestionFourResult"
         app:srcCompat="@drawable/ic_wrong_24dp" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:visibility="invisible"
+        android:inputType="textPersonName"
+        android:hint="Enter Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTotalScore" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

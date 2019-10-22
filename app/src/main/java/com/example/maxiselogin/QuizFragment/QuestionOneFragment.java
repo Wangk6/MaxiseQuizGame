@@ -21,8 +21,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.maxiselogin.MainLoggedInStart;
 import com.example.maxiselogin.R;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class QuestionOneFragment extends Fragment {
 
     private RadioGroup radioGroup;
@@ -30,19 +28,18 @@ public class QuestionOneFragment extends Fragment {
     private Button submitBtn;
 
     public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String QUESTION_ONE = "questionOne";
-    public static final String SCORE = "score";
+
     SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    MainLoggedInStart ls = new MainLoggedInStart();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_quiz_question_one, container, false);
 
         sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
         submitBtn = view.findViewById(R.id.btnSubmitQuizOne);
         radioGroup = view.findViewById(R.id.radioGroupQ1);
+        ls.resetScoreData(sharedPreferences);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -72,25 +69,14 @@ public class QuestionOneFragment extends Fragment {
                     new AlertDialog.Builder(getContext())
                             .setTitle("Confirm")
                             .setMessage("Selected: " + (radioButton.getText()))
-
                             // Specifying a listener allows you to take an action before dismissing the dialog.
                             // The dialog is automatically dismissed when a dialog button is clicked.
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // Continue with delete operation
                                     //Save results
-                                   // MainLoggedInStart ls = new MainLoggedInStart();
-                                    //ls.saveData(1, radioButton.getText().toString());
-
                                     String ans = radioButton.getText().toString().trim();
-                                    if(ans.equals("50")) {
-                                        editor.putInt(SCORE, 20);
-                                        editor.putBoolean(QUESTION_ONE, true);
-                                    }
-                                    else{
-                                        editor.putBoolean(QUESTION_ONE, false);
-                                    }
-                                    editor.commit();
+                                    ls.saveData(sharedPreferences,1, ans);
 
                                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                                     ft.replace(R.id.quiz_fragment, new QuestionTwoFragment());

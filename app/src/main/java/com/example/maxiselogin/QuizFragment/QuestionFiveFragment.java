@@ -28,11 +28,13 @@ public class QuestionFiveFragment extends Fragment {
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String QUESTION_FIVE = "questionFive";
     public static final String SCORE = "score";
+    SharedPreferences sharedPreferences;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_quiz_question_five, container, false);
-
+        sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         submitBtn = view.findViewById(R.id.btnSubmitQuizFive);
         cb1 = view.findViewById(R.id.checkBox);
         cb2 = view.findViewById(R.id.checkBox2);
@@ -88,39 +90,23 @@ public class QuestionFiveFragment extends Fragment {
     }
 
     private void isCheckedAns(){
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
         MainLoggedInStart ls = new MainLoggedInStart();
+
         if (cb1.isChecked()) {
-            //new MainLoggedInStart().saveData(4, cb1.getText().toString());
-            //editor.putInt(SCORE, getScoreData("SCORE")+7);
-            editor.putInt(QUESTION_FIVE, getScoreData()-7); //Calculate at the end, if total is 21, all 3 correct were selected
+            ls.saveData(sharedPreferences, 5, cb1.getText().toString().trim()); //Calculate at the end, if total is 21, all 3 correct were selected
         }
 
         if (cb2.isChecked()) {
-            //new MainLoggedInStart().saveData(4, cb2.getText().toString());
-            editor.putInt(QUESTION_FIVE, getScoreData()+7); //Calculate at the end, if total is 21, all 3 correct were selected
+            ls.saveData(sharedPreferences, 5, cb2.getText().toString().trim()); //Calculate at the end, if total is 21, all 3 correct were selected
         }
 
         if (cb3.isChecked()) {
-            //new MainLoggedInStart().saveData(4, cb3.getText().toString());
-            editor.putInt(QUESTION_FIVE, getScoreData()+7); //Calculate at the end, if total is 21, all 3 correct were selected
+            ls.saveData(sharedPreferences, 5, cb3.getText().toString().trim()); //Calculate at the end, if total is 21, all 3 correct were selected
         }
 
         if (cb4.isChecked()) {
-            //new MainLoggedInStart().saveData(4, cb4.getText().toString());
-            editor.putInt(QUESTION_FIVE, getScoreData()+7); //Calculate at the end, if total is 21, all 3 correct were selected
+            ls.saveData(sharedPreferences, 5, cb4.getText().toString().trim()); //Calculate at the end, if total is 21, all 3 correct were selected
         }
-
-        editor.commit();
     }
 
-    public int getScoreData(){
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        int num = 0;
-
-        num = sharedPreferences.getInt(QUESTION_FIVE, 0);
-
-        return num;
-    }
 }
