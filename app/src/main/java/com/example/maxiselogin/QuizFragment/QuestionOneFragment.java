@@ -32,12 +32,15 @@ public class QuestionOneFragment extends Fragment {
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String QUESTION_ONE = "questionOne";
     public static final String SCORE = "score";
-
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_quiz_question_one, container, false);
 
+        sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         submitBtn = view.findViewById(R.id.btnSubmitQuizOne);
         radioGroup = view.findViewById(R.id.radioGroupQ1);
 
@@ -79,10 +82,8 @@ public class QuestionOneFragment extends Fragment {
                                    // MainLoggedInStart ls = new MainLoggedInStart();
                                     //ls.saveData(1, radioButton.getText().toString());
 
-                                    SharedPreferences sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
                                     String ans = radioButton.getText().toString().trim();
-                                    if(ans == "50") {
+                                    if(ans.equals("50")) {
                                         editor.putInt(SCORE, 20);
                                         editor.putBoolean(QUESTION_ONE, true);
                                     }
