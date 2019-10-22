@@ -35,49 +35,43 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtHelpOne"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="48dp"
-            android:text=""
+            android:layout_marginTop="124dp"
+            android:text="Current High Score"
+            android:textAlignment="center"
             android:textColor="#00D0FF"
-            android:textSize="20dp"
+            android:textSize="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMaxiseLogo" />
+
+
+        <TextView
+            android:id="@+id/txtHighScore"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="276dp"
+            android:text="0%"
+            android:textAlignment="center"
+            android:textColor="#00D0FF"
+            android:textSize="40dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtMaxiseLogo" />
 
         <TextView
-            android:id="@+id/txtHelpThree"
+            android:id="@+id/txtHighScoreUser"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="200dp"
+            android:textAlignment="center"
+            android:text="Kevin"
             android:textColor="#00D0FF"
-            android:textSize="20dp"
+            android:textSize="40dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtHelpTwo" />
-
-        <TextView
-            android:id="@+id/txtHelpFour"
-            android:layout_width="340dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="56dp"
-            android:textColor="#00D0FF"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtHelpThree" />
-
-        <TextView
-            android:id="@+id/txtHelpTwo"
-            android:layout_width="340dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="60dp"
-            android:textColor="#00D0FF"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtHelpOne" />
+            app:layout_constraintTop_toBottomOf="@+id/txtMaxiseLogo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

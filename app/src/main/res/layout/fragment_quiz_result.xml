@@ -6,11 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
-        android:id="@+id/txtQuestionFive"
+        android:id="@+id/txtTotalScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="36dp"
+        android:text="0%"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuestionFiveResults" />
+
+    <TextView
+        android:id="@+id/txtResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
         android:text="Results"
         android:textAlignment="center"
         android:textColor="#2196F3"
@@ -20,67 +35,145 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup2"
+    <TextView
+        android:id="@+id/txtQuestionOneResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Question 1"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toEndOf="@+id/imgQuestionOneResult"
+        app:layout_constraintTop_toBottomOf="@+id/txtResults" />
+
+    <TextView
+        android:id="@+id/txtQuestionTwoResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Question 2"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toEndOf="@+id/imgQuestionTwoResult"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuestionOneResult" />
+
+    <TextView
+        android:id="@+id/txtQuestionThreeResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Question 3"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toEndOf="@+id/imgQuestionThreeResult"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuestionTwoResults" />
+
+    <TextView
+        android:id="@+id/txtQuestionFourResults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:layout_marginEnd="140dp"
+        android:text="Question 4"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
+        android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtQuestionFive">
+        app:layout_constraintHorizontal_bias="0.631"
+        app:layout_constraintStart_toEndOf="@+id/imgQuestionFourResult"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuestionThreeResults" />
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pluto"
-            android:layout_marginBottom="20dp"
-            android:paddingLeft="10dp"
-            android:textColor="#2196F3"
-            android:textSize="24dp"/>
-
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mars"
-            android:layout_marginBottom="20dp"
-            android:paddingLeft="10dp"
-            android:textColor="#2196F3"
-            android:textSize="24dp"/>
-
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:paddingLeft="10dp"
-            android:text="Uranus"
-            android:textColor="#2196F3"
-            android:textSize="24dp" />
-
-        <CheckBox
-            android:id="@+id/checkBox4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:paddingLeft="10dp"
-            android:text="Jupiter"
-            android:textColor="#2196F3"
-            android:textSize="24dp" />
-    </RadioGroup>
+    <TextView
+        android:id="@+id/txtQuestionFiveResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Question 5"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toEndOf="@+id/imgQuestionFiveResult"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuestionFourResults" />
 
     <Button
-        android:id="@+id/btnSubmitQuizFive"
+        android:id="@+id/btnSubmitQuiz"
         style="@style/ButtonStyle"
         android:layout_width="154dp"
         android:layout_height="52dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="37dp"
         android:background="@drawable/layout_buttoncurve"
         android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTotalScore"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imgQuestionOneResult"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="152dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_wrong_24dp" />
+
+    <ImageView
+        android:id="@+id/imgQuestionTwoResult"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgQuestionOneResult"
+        app:srcCompat="@drawable/ic_wrong_24dp" />
+
+    <ImageView
+        android:id="@+id/imgQuestionThreeResult"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgQuestionTwoResult"
+        app:srcCompat="@drawable/ic_wrong_24dp" />
+
+    <ImageView
+        android:id="@+id/imgQuestionFourResult"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgQuestionThreeResult"
+        app:srcCompat="@drawable/ic_wrong_24dp" />
+
+    <ImageView
+        android:id="@+id/imgQuestionFiveResult"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgQuestionFourResult"
+        app:srcCompat="@drawable/ic_wrong_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

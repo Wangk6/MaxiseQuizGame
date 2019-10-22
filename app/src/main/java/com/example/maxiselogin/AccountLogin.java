@@ -14,6 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class AccountLogin extends Fragment {
     Button btnLogin;
     EditText loginEmail, loginPassword;
@@ -65,6 +68,12 @@ public class AccountLogin extends Fragment {
                     Toast.makeText(getActivity(), "Empty Fields", Toast.LENGTH_SHORT).show();
                     loginPassword.setError("Empty");
                 }
+                else if(isValidEmailAddress(emailText) == false){
+                    loginEmail.setError("Invalid Format (example@mail.com)");
+                }
+                else if(passText.length() < 8){
+                    loginPassword.setError("Password must be > 8 characters");
+                }
                 else{
                     //Check for existing user
                         //Check for matching password
@@ -88,6 +97,34 @@ public class AccountLogin extends Fragment {
         else if(type == "KEY_PASSWORD"){
             loginPassword.getText().clear();
             loginPassword.setText(msg);
+        }
+    }
+
+    public boolean isValidEmailAddress(String email) {
+        // Email Regex java
+        String EMAIL_REGEX = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
+
+        // static Pattern object, since pattern is fixed
+        Pattern pattern;
+
+        // non-static Matcher object because it's created from the input String
+        Matcher matcher;
+
+        // initialize the Pattern object
+        pattern = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
+
+
+        /**
+         * This method validates the input email address with EMAIL_REGEX pattern
+         *
+         * @param email
+         * @return boolean
+         */
+        matcher = pattern.matcher(email);
+        if(matcher.matches() == true){
+            return true;
+        }else {
+            return false;
         }
     }
 

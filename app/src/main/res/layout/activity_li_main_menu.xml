@@ -48,9 +48,9 @@
 
     <Button
         android:id="@+id/btnHelp"
-        style="@style/ButtonStyle"
         android:layout_width="230dp"
         android:layout_height="65dp"
+        style="@style/ButtonStyle"
         android:layout_marginStart="92dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/layout_buttoncurve"

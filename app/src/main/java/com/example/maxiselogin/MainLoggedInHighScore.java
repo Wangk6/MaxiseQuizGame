@@ -8,22 +8,17 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainLoggedInHighScore extends AppCompatActivity {
-    TextView ruleOne, ruleTwo, ruleThree, ruleFour;
-    String ruleOneText = "1. Multiple choice answers require the user to pick the correct answer to proceed";
-    String ruleTwoText = "2. Some questions may have multiple answers and the user must pick the correct answers to proceed";
-    String ruleThreeText = "3. Questions may have timers which require the user to pick a choice before it runs to 0";
-
+    TextView txtHighScore, txtHighScoreName;
+    int highScore;
+    String userName = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_li_help);
-
-        ruleOne = findViewById(R.id.txtHelpOne);
-        ruleOne.setText(ruleOneText);
-        ruleTwo = findViewById(R.id.txtHelpTwo);
-        ruleTwo.setText(ruleTwoText);
-        ruleThree = findViewById(R.id.txtHelpThree);
-        ruleThree.setText(ruleThreeText);
+        setContentView(R.layout.activity_li_high_score);
+        //txtHighScoreName = findViewById(R.id.txtHighScoreUser);
+        //txtHighScoreName.setText(userName);
+        //txtHighScore = findViewById(R.id.txtHighScore);
+        //txtHighScore.setText(highScore);
     }
 
     public void PreviousPage(View view) {
