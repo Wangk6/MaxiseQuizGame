@@ -97,7 +97,7 @@ public class QuestionResultsFragment extends Fragment {
                     String userName = name.getText().toString().trim();
                     if (!userName.equals("")) {
                         hs.setHighScore(sharedPreferences, userScore, userName);
-                        Intent i = new Intent(getActivity(), MainLoggedInStart.class);
+                        Intent i = new Intent(getActivity(), MainLoggedInActivity.class);
                         startActivity(i);
                     }
                     else {
